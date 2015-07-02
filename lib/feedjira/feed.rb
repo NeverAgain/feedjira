@@ -80,7 +80,7 @@ module Feedjira
       Faraday.new(url: url) do |conn|
         conn.use FaradayMiddleware::FollowRedirects, limit: 3
         conn.adapter :net_http
-        if options.basic_auth
+        if options[:basic_auth]
           conn.basic_auth options[:basic_auth][:username], options[:basic_auth][:password]
         end
       end
